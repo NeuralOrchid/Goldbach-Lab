@@ -1,22 +1,16 @@
-import numpy as np
-import matplotlib.pyplot as plt
+import cmath
 
-# def sieve_primes(n: int) -> np.ndarray:
-#     """Return all primes < n using a simple sieve."""
-#     if n <= 2:
-#         return np.array([], dtype=int)
-#     sieve = np.ones(n, dtype=bool)
-#     sieve[:2] = False
-#     limit = int(np.sqrt(n)) + 1
-#     for i in range(2, limit):
-#         if sieve[i]:
-#             sieve[i*i:n:i] = False
-#     return np.flatnonzero(sieve)
+PRIMES = (2, 3, 5, 7, 11, 13, 17, 19, 23, 29) # Prime numbers less than N
 
-def kronecker_dft_np(x: int, N: int) -> complex:
-    k = np.arange(N)
-    return np.sum(np.exp(2j * np.pi * k * x / N)) / N
+def compute(N: int) -> complex:
+    total = 0+0j
 
-if __name__ == "__main__":
-    print(kronecker_dft_np(0, 5))  # (1+0j)
-    print(kronecker_dft_np(3, 5))  # (0+0j)
+    for k in range(N):
+        s = 0
+        for p in PRIMES:
+            s += cmath.exp(2j * cmath.pi * k * p / N)
+        total += s**2 * cmath.exp(2j * cmath.pi * k * -1)
+
+    return total / N
+
+print(compute(30)) # (6+0j);
