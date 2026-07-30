@@ -13,4 +13,4 @@ def compute(N: int) -> complex:
 
     return total / N
 
-print(compute(30)) # (6+0j);
+print(compute(30)) # (6+0j); so the answer is 6
