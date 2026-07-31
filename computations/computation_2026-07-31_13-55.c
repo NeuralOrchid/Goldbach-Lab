@@ -2,6 +2,7 @@
 // Date: 2026-07-31
 //
 // ---------------------------
+// gcc -O3 -std=c11 -o sixk_primes "computations/computation_2026-07-31_13-55.c" -lm
 
 #include <stdio.h>
 #include <stdlib.h>
