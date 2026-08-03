@@ -37,16 +37,13 @@ def survives(n: int, candidates: NDArray):
     return True
 
 def main() -> None:
-    N: Literal[20] = 20
-    candidates = np.arange(-N, N + 1, dtype=int)
-    candidates = candidates[candidates != 0]
-
-    primes = np.abs(np.array([n for n in candidates if survives(n, candidates)], dtype=int) * 30)
-
-    is_prime = sieveOfEratosthenes(np.max(primes) + 17)
-    for p in primes:
-        if not any([is_prime[p + r] for r in (1, 7, 11, 13, -1, -7, -11, -13)]):
-            print(f"there's a problem with {p}")
+    is_prime = sieveOfEratosthenes(2310)
+    primes = [i for i, prime in enumerate(is_prime) if prime if i%210 in (1, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199)]
+    nums = [210*i + j for i in range(1, 11) for j in range(0, 210, 2)]
+    sums = [i + j for i in primes for j in primes]
+    for num in nums:
+        if not num in sums:
+            print("counterexample:", num)
 
 if __name__ == "__main__":
     print(" => Running...")
