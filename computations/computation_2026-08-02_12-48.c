@@ -4,7 +4,7 @@
 // ---------------------------
 // computation_2026-08-02_12-48.c
 // Build: gcc -O3 -std=c11 computation_2026-08-02_12-48.c -o divpng
-// Usage: divpng 2048 divisibility.png
+// Usage: divpng 2048 divisibility.png 2026-10-10 23:00
 
 #include <stdio.h>
 #include <stdlib.h>
